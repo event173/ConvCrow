@@ -1,4 +1,4 @@
 # ConvCrow
-![small png convcrow](https://github.com/event173/ConvCrow/assets/147558920/87294186-f9af-416d-8019-d0ad72fce3ea)
+![small png convcrow transparent](https://github.com/event173/ConvCrow/assets/147558920/d2ab0a6a-ecc4-4aff-aaf6-70747a5dd211)
 
 Simple Image Converter + Generating an .ico set in standard sizes
