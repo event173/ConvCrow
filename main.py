@@ -6,6 +6,9 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 from PIL import Image, ImageOps
 import zipfile
+from PyQt5.QtGui import QIcon
+
+
 
 class ImageConverterApp(QWidget):
     def __init__(self):
@@ -24,6 +27,8 @@ class ImageConverterApp(QWidget):
             QPushButton:pressed {background-color: #4b6eaf;}
             QLabel {color: #dcdcdc;}
         """)
+
+        self.setWindowIcon(QIcon('icon.ico'))
 
         self.mainLayout = QVBoxLayout()
         
