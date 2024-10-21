@@ -55,6 +55,7 @@ class ImageConverterApp(QWidget):
         
         self.mainLayout.addLayout(self.buttonLayout)
         self.setLayout(self.mainLayout)
+        self.setAcceptDrops(True)
     
     def loadImage(self):
         formatOptions = 'Images (*.png *.xpm *.jpg *.jpeg *.bmp *.gif *.webp)'
@@ -90,6 +91,21 @@ class ImageConverterApp(QWidget):
                     temp_icon_io.seek(0)
                     myzip.writestr(f"icon_{size}x{size}.ico", temp_icon_io.read())  # Schreibe den Stream ins ZIP
             QMessageBox.information(self, "Erfolg", "ICO Set erfolgreich in ZIP gespeichert!")
+
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasUrls():
+            event.acceptProposedAction()
+
+    def dropEvent(self, event):
+        for url in event.mimeData().urls():
+            filePath = url.toLocalFile()
+            if os.path.isfile(filePath):
+                self.currentImage = filePath
+                pixmap = QPixmap(filePath)
+                self.imageLabel.setPixmap(pixmap.scaled(self.imageLabel.width(), self.imageLabel.height(), Qt.KeepAspectRatio, Qt.SmoothTransformation))
+                self.saveButton.setEnabled(True)
+                self.icoSetButton.setEnabled(True)
+                break
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
